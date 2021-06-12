@@ -33,6 +33,10 @@ function sendRequest($request)
 
     $result = json_decode($result, true);
 
+    if ($http_code >= 400) {
+       $result['longmessage'] = sprintf("http error %s", $http_code);
+    }
+
     return $result;
 }
 
