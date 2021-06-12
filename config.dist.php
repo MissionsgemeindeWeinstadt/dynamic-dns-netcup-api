@@ -20,3 +20,10 @@ define('CHANGE_TTL', true);
 
 // Use netcup DNS REST-API
 define('APIURL', 'https://ccp.netcup.net/run/webservice/servers/endpoint.php?JSON');
+
+// Set Connect timeout for API calls in seconds
+//define('API_CONNECT_TIMEOUT', 10);
+
+// Set Response timeout for API calls in seconds
+//define('API_TIMEOUT', 15);
+

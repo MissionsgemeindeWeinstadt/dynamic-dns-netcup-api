@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 //Load necessary functions
@@ -9,6 +10,13 @@ outputStdout("This script is not affiliated with netcup.");
 outputStdout("=============================================\n");
 
 outputStdout(sprintf("Updating DNS records for host %s on domain %s\n", HOST, DOMAIN));
+
+if (defined('API_CONNECT_TIMEOUT')) {
+    outputStdout(sprintf("API Connect Timeout %d", API_CONNECT_TIMEOUT));
+}
+if (defined('API_TIMEOUT')) {
+    outputStdout(sprintf("API Request Timeout %d", API_TIMEOUT));
+}
 
 // Login
 if ($apisessionid = login(CUSTOMERNR, APIKEY, APIPASSWORD)) {

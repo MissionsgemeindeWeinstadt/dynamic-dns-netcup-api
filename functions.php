@@ -15,6 +15,7 @@ if(isset($argv)){
 }
 
 const SUCCESS = 'success';
+const FAILED = 'failed';
 
 // Sends $request to netcup Domain API and returns the result
 function sendRequest($request)
@@ -26,15 +27,23 @@ function sendRequest($request)
         CURLOPT_HTTPHEADER => array('Content-Type: application/json'),
         CURLOPT_POSTFIELDS => $request,
     );
+    if (defined('API_CONNECT_TIMEOUT')) {
+       $curlOptions[CURLOPT_CONNECTTIMEOUT] = API_CONNECT_TIMEOUT;
+    }
+    if (defined('API_TIMEOUT')) {
+       $curlOptions[CURLOPT_TIMEOUT] = API_TIMEOUT;
+    }
     curl_setopt_array($ch, $curlOptions);
 
     $result = curl_exec($ch);
+    $http_code  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
     $result = json_decode($result, true);
 
     if ($http_code >= 400) {
        $result['longmessage'] = sprintf("http error %s", $http_code);
+       $result['status'] = FAILED
     }
 
     return $result;
