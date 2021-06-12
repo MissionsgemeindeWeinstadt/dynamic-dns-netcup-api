@@ -43,7 +43,7 @@ function sendRequest($request)
 
     if ($http_code >= 400) {
        $result['longmessage'] = sprintf("http error %s", $http_code);
-       $result['status'] = FAILED
+       $result['status'] = FAILED;
     }
 
     return $result;
