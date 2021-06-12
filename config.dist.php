@@ -22,8 +22,8 @@ define('CHANGE_TTL', true);
 define('APIURL', 'https://ccp.netcup.net/run/webservice/servers/endpoint.php?JSON');
 
 // Set Connect timeout for API calls in seconds
-//define('API_CONNECT_TIMEOUT', 10);
+define('API_CONNECT_TIMEOUT', 10);
 
 // Set Response timeout for API calls in seconds
-//define('API_TIMEOUT', 15);
+define('API_TIMEOUT', 15);
 
