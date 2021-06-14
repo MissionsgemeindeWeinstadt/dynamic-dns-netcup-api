@@ -41,7 +41,7 @@ function sendRequest($request)
 
     $result = json_decode($result, true);
 
-    if ($http_code >= 400) {
+    if (is_null($result)) {
        $result['longmessage'] = sprintf("http error %s", $http_code);
        $result['status'] = FAILED;
     }

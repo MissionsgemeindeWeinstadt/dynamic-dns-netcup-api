@@ -11,6 +11,7 @@ outputStdout("=============================================\n");
 
 outputStdout(sprintf("Updating DNS records for host %s on domain %s\n", HOST, DOMAIN));
 
+// Show connection timeouts if set
 if (defined('API_CONNECT_TIMEOUT')) {
     outputStdout(sprintf("API Connect Timeout %d", API_CONNECT_TIMEOUT));
 }
